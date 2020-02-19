@@ -1,0 +1,39 @@
+.App {
+  text-align: center;
+}
+
+.usercard {
+  text-align: center;
+  border: 2px solid rgb(231, 231, 243);
+  width: 400px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: rgb(247, 247, 241);
+}
+
+.users-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3%;
+}
+
+.postcard {
+  text-align: center;
+  border: 2px solid rgb(202, 202, 230);
+  width: 400px;
+  margin: auto;
+  border-radius: 10px;
+  background-color: rgb(151, 151, 150);
+}
+
+.posts-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3%;
+}
+
+
+h1 {
+  color: black;
+  font-size: 40px;
+}
