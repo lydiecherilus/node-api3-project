@@ -7,7 +7,7 @@
   border: 2px solid rgb(231, 231, 243);
   width: 400px;
   margin: auto;
-  border-radius: 10px;
+  margin-bottom: 15px;
   background-color: rgb(247, 247, 241);
 }
 
@@ -19,11 +19,14 @@
 
 .postcard {
   text-align: center;
-  border: 2px solid rgb(202, 202, 230);
-  width: 400px;
+  border: 2px solid rgb(184, 184, 233);
+  width: 600px;
+  height: 210px;
+  padding-right: 2px;
+  padding-left: 2px;
   margin: auto;
-  border-radius: 10px;
-  background-color: rgb(151, 151, 150);
+  margin-bottom: 5px;
+  background-color: rgb(201, 201, 199);
 }
 
 .posts-list {
@@ -32,6 +35,17 @@
   padding: 3%;
 }
 
+.navlink {
+  font-size: 20px;
+  color: white;
+  background-color: grey;
+  border: 1px solid rgb(10, 0, 0);
+  padding-right: 5px;
+  padding-left: 5px;
+  width: 75px;
+  height: 25px;
+  margin-right: 5px;
+}
 
 h1 {
   color: black;

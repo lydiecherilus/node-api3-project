@@ -12,7 +12,7 @@ server.get('/', (req, res) => {
 //custom middleware
 
 function logger(req, res, next) {
-  req.TimeStamp=Date.now();
+  req.TimeStamp=(new Date().toISOString());
   console.log(`${req.method} request to ${req.originalUrl} made at ${req.TimeStamp} `)
   next();
 }

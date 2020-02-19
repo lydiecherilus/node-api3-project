@@ -42,19 +42,15 @@ router.get('/', (req, res) => {
 router.get('/:id', validateUserId, (req, res) => {
   // do your magic! 
   // get user by id
-  res.status(200).json(users);
+  res.status(200).json(req.user);
 });
 
 
-router.get('/:id/posts', (req, res) => {
+router.get('/:id/posts', validateUserId, (req, res) => {
   // do your magic!
   // get users posts
   Users.getUserPosts(req.params.id).then((posts) => {
-    if (posts) {
-      res.status(200).json(posts);
-    } else {
-      res.status(404).json({ errorMessage: "The user with the specified ID does not exist." })
-    }
+    res.status(200).json(posts);
   }).catch(error => {
     console.log(error);
     res.status(500).json({ errorMessage: "The posts information could not be retrieved" })
@@ -62,16 +58,12 @@ router.get('/:id/posts', (req, res) => {
 });
 
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', validateUserId, (req, res) => {
   // do your magic!
   // delete a user
   const userId = req.params.id;
   Users.remove(userId).then(removed => {
-    if (removed) {
-      res.status(200).json(removed);
-    } else {
-      res.status(500).json({ errorMessage: "The user with the specified ID does not exist." })
-    }
+    return res.status(200).json(removed);
   }).catch(error => {
     console.log(error);
     res.status(500).json({ errorMessage: "The user could not be removed" })
@@ -79,18 +71,14 @@ router.delete('/:id', (req, res) => {
 });
 
 
-router.put('/:id', (req, res) => {
+router.put('/:id', validateUserId, (req, res) => {
   // do your magic!
   // update a user 
   const userId = req.params.id;
   const { name } = req.body;
   if (name) {
     Users.update(userId, { name }).then(updated => {
-      if (updated) {
-        res.status(200).json(updated);
-      } else {
-        res.status(500).json({ errorMessage: "The user with the specified ID does not exist." })
-      }
+      res.status(200).json(updated);
     }).catch(error => {
       res.status(500).json({ errorMessage: "The user information could not be modified." })
     })
@@ -107,16 +95,15 @@ function validateUserId(req, res, next) {
   const userId = req.params.id;
   Users.getById(userId).then((users) => {
     if (users) {
-      res.status(200).json(users);
+      req.user = users;
+      next()
     } else {
-      res.status(404).json({ errorMessage: "The user with the specified ID does not exist." });
+      res.status(404).json({ errorMessage: "invalid user id" });
     };
   }).catch(error => {
-    console.log(error);
-    res.status(500).json({ errorMessage: "The user information could not be retrieved." })
-  });
+    console.log(error)
+  })
 }
-
 
 function validateUser(req, res, next) {
   // do your magic!

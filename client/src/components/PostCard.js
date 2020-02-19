@@ -3,9 +3,9 @@ import React from 'react'
 const PostCard = props => {
     return (
         <div className="postcard">
-            <h3>User id: {props.post.id}</h3>
-            <h3>Post Content: {props.post.text}</h3>
-            <h3>Post id: {props.post.user_id}</h3>
+            <h4>Post: {props.post.text}</h4>
+            <h4>User id: {props.post.user_id}</h4>
+            <h5>Post id: {props.post.id}</h5>
         </div>
     )
 }
