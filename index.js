@@ -1,4 +1,5 @@
 // code away!
+require('dotenv').config() // this will read everything in .env
 
 const express = require('express');
 const UserRouter = require('./users/userRouter')
